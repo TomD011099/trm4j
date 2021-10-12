@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
@@ -26,7 +27,7 @@ public class TimeRegistrationRepository {
     CurrentUserService currentUserService;
 
     @RolesAllowed({"MANAGER", "CONSULTANT"})
-    public void create(NewTimeRegistrationModel timeRegistration) {
+    public void create(@Valid NewTimeRegistrationModel timeRegistration) {
         TimeRegistration trm = new TimeRegistration();
 
         LocalTime start = timeRegistration.getStartTime();
@@ -38,7 +39,6 @@ public class TimeRegistrationRepository {
         trm.setConsultant(currentUserService.getCurrentUserName());
 
         logger.info("Creating new time registration: " + trm);
-        System.out.println("Creating new time registration: " + trm);
 
         entityManager.persist(trm);
     }
@@ -61,5 +61,19 @@ public class TimeRegistrationRepository {
 
     public TimeRegistration getById(Long id) {
         return entityManager.find(TimeRegistration.class, id);
+    }
+
+    public List<TimeRegistration> getByProjectName(String name) {
+        return entityManager
+                .createQuery("select t from TimeRegistration t left join Project where t.project.name = ?1", TimeRegistration.class)
+                .setParameter(1, name)
+                .getResultList();
+    }
+
+    public List<TimeRegistration> getByProjectId(Long id) {
+        return entityManager
+                .createQuery("select t from TimeRegistration t left join Project where t.project.id = ?1", TimeRegistration.class)
+                .setParameter(1, id)
+                .getResultList();
     }
 }

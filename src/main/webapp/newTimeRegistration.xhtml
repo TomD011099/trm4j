@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
     <ui:composition template="WEB-INF/templates/master.xhtml">
         <ui:param name="title" value="#{msgs['trm.new']}"/>
         <ui:define name="content">
@@ -14,21 +15,23 @@
                 <p:selectOneListbox value="#{newTimeRegistrationModel.projectId}" id="trm_proj">
                     <f:selectItems value="#{projectListModel.projects}" var="p" itemLabel="#{p.name}" itemValue="#{p.id}"/>
                 </p:selectOneListbox>
-                <h:message for="trm_proj"/>
+                <h:message for="trm_proj" styleClass="error"/>
 
                 <h:outputText value="#{msgs['trm.day']}"/>
                 <p:calendar value="#{newTimeRegistrationModel.day}" mode="inline" id="trm_day"/>
-                <h:message for="trm_day"/>
+                <h:message for="trm_day" styleClass="error"/>
 
                 <h:outputText value="#{msgs['trm.start']}"/>
                 <p:datePicker value="#{newTimeRegistrationModel.startTime}" inline="true" timeOnly="true" id="trm_start"/>
-                <h:message for="trm_start"/>
+                <h:message for="trm_start" styleClass="error"/>
 
                 <h:outputText value="#{msgs['trm.end']}"/>
                 <p:datePicker value="#{newTimeRegistrationModel.endTime}" inline="true" timeOnly="true" id="trm_end"/>
-                <h:message for="trm_end"/>
+                <h:message for="trm_end" styleClass="error"/>
 
+                <h:messages globalOnly="true" styleClass="error"/>
                 <p:commandButton value="#{msgs['trm.create']}" action="#{newTimeRegistrationModel.create}" ajax="false"/>
+                <o:validateBean value="#{newTimeRegistrationModel}" showMessageFor="trm_start trm_end"/>
             </h:form>
         </ui:define>
     </ui:composition>

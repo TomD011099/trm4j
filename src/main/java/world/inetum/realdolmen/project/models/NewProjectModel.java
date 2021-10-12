@@ -31,15 +31,17 @@ public class NewProjectModel {
         return purchasedHours;
     }
 
-    public void setPurchasedHours(Integer purchasedHours) {
+    public NewProjectModel setPurchasedHours(Integer purchasedHours) {
         this.purchasedHours = purchasedHours;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public NewProjectModel setName(String name) {
         this.name = name;
+        return this;
     }
 }

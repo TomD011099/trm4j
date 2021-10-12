@@ -53,10 +53,8 @@ public class Project {
         return total;
     }
 
-    public String getFormattedDuration() {
-        return String.format("%d:%02d",
-                purchasedHours.toHours(),
-                purchasedHours.toMinutes() % 60);
+    public Duration getTimeLeft() {
+        return purchasedHours.minus(getWorkedTime());
     }
 
     public Long getId() {

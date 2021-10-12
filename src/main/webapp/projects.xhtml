@@ -13,7 +13,21 @@
             <p:dataTable value="#{projectListModel.projects}" var="project">
                 <p:column headerText="#{msgs['id']}">#{project.id}</p:column>
                 <p:column headerText="#{msgs['name']}">#{project.name}</p:column>
-                <p:column headerText="#{msgs['projects.duration']}">#{project.getFormattedDuration()}</p:column>
+                <p:column headerText="#{msgs['projects.duration']}">
+                    <h:outputText value="#{project.purchasedHours}" rendered="true">
+                        <f:converter converterId="DurationConverter"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="#{msgs['projects.leftover']}">
+                    <h:outputText value="#{project.timeLeft}" rendered="true">
+                        <f:converter converterId="DurationConverter"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="#{msgs['projects.worked']}">
+                    <h:outputText value="#{project.workedTime}" rendered="true">
+                        <f:converter converterId="DurationConverter"/>
+                    </h:outputText>
+                </p:column>
                 <p:column>
                     <p:link value="#{msgs['projects.view']}" outcome="projectDetails">
                         <f:param name="id" value="#{project.id}"/>

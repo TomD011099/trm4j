@@ -6,6 +6,7 @@ import world.inetum.realdolmen.timeRegistration.TimeRegistration;
 
 import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
+import java.time.Duration;
 import java.util.List;
 
 @Model
@@ -15,7 +16,7 @@ public class ProjectDetailsModel {
 
     private String name;
 
-    private String purchasedHours;
+    private Duration purchasedHours;
 
     private List<TimeRegistration> timeRegistrations;
 
@@ -26,7 +27,7 @@ public class ProjectDetailsModel {
         Project p = projectRepository.getById(this.id);
 
         this.name = p.getName();
-        this.purchasedHours = p.getFormattedDuration();
+        this.purchasedHours = p.getPurchasedHours();
         this.timeRegistrations = p.getTimeRegistrations();
     }
 
@@ -46,11 +47,11 @@ public class ProjectDetailsModel {
         this.name = name;
     }
 
-    public String getPurchasedHours() {
+    public Duration getPurchasedHours() {
         return purchasedHours;
     }
 
-    public void setPurchasedHours(String purchasedHours) {
+    public void setPurchasedHours(Duration purchasedHours) {
         this.purchasedHours = purchasedHours;
     }
 

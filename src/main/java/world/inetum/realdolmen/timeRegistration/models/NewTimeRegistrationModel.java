@@ -1,15 +1,20 @@
 package world.inetum.realdolmen.timeRegistration.models;
 
 import world.inetum.realdolmen.timeRegistration.TimeRegistrationRepository;
+import world.inetum.realdolmen.validation.PositiveTrmDuration;
+import world.inetum.realdolmen.validation.TrmHoursWorkedBelowPurchased;
 
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.enterprise.inject.Model;
+import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-//TODO add validation for positive time
 @Model
+@TrmHoursWorkedBelowPurchased
+@PositiveTrmDuration
 public class NewTimeRegistrationModel {
 
     @NotNull
@@ -28,17 +33,16 @@ public class NewTimeRegistrationModel {
     TimeRegistrationRepository timeRegistrationRepository;
 
     public String create() {
-        System.out.println("Creating new time registration: " + this);
         timeRegistrationRepository.create(this);
         return "trm?faces-red";
     }
 
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
-    }
-
     public Long getProjectId() {
         return projectId;
+    }
+
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
     }
 
     public LocalDate getDay() {
@@ -64,6 +68,4 @@ public class NewTimeRegistrationModel {
     public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
-
-
 }

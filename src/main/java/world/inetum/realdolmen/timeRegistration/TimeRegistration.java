@@ -41,12 +41,6 @@ public class TimeRegistration {
 
     }
 
-    public String getFormattedDuration() {
-        return String.format("%d:%02d",
-                duration.toHours(),
-                duration.toMinutes() % 60);
-    }
-
     public Long getId() {
         return id;
     }
@@ -106,7 +100,7 @@ public class TimeRegistration {
                 "id=" + id +
                 ", project=" + project +
                 ", day=" + day +
-                ", duration=" + getFormattedDuration() +
+                ", duration=" + duration +
                 ", consultant='" + consultant + '\'' +
                 '}';
     }

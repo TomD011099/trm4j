@@ -14,7 +14,11 @@
                 <p:column headerText="#{msgs['id']}">#{trm.id}</p:column>
                 <p:column headerText="#{msgs['project']}">#{trm.project.name}</p:column>
                 <p:column headerText="#{msgs['trm.day']}">#{trm.day}</p:column>
-                <p:column headerText="#{msgs['trm.time']}">#{trm.getFormattedDuration()}</p:column>
+                <p:column headerText="#{msgs['trm.time']}">
+                    <h:outputText value="#{trm.duration}" rendered="true">
+                        <f:converter converterId="DurationConverter"/>
+                    </h:outputText>
+                </p:column>
             </p:dataTable>
         </ui:define>
     </ui:composition>

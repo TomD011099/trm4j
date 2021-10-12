@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import java.time.Duration;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 @Stateless
 public class ProjectRepository {
@@ -37,5 +36,10 @@ public class ProjectRepository {
 
     public Project getById(Long id) {
         return entityManager.find(Project.class, id);
+    }
+
+
+    public Duration getRemainingTimeById(Long id) {
+        return getById(id).getTimeLeft();
     }
 }

@@ -18,7 +18,7 @@
                 <p:inputText value="#{newProjectModel.purchasedHours}" id="phours"/>
                 <h:message for="phours"/>
 
-                <p:commandButton value="#{msgs['projects.create']}" action="#{newProjectModel.create}"/>
+                <p:commandButton value="#{msgs['projects.create']}" action="#{newProjectModel.create}" ajax="false"/>
             </h:form>
         </ui:define>
     </ui:composition>
