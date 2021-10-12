@@ -9,6 +9,7 @@
         <h:head>
             <title>TRM4j - #{title}</title>
             <h:outputStylesheet name="styles/inetum-style.css"/>
+            <ui:insert name="css"/>
         </h:head>
         <h:body>
             <header>
@@ -32,7 +33,9 @@
                     <h:link value="#{msgs['login']}" outcome="login" rendered="#{empty request.userPrincipal}"/>
                 </div>
             </header>
-            <ui:insert name="content"/>
+            <div class="main-content">
+                <ui:insert name="content"/>
+            </div>
             <footer>
                 <h:outputText rendered="true" value="#{msgs['footer']}"/>
                 <div>

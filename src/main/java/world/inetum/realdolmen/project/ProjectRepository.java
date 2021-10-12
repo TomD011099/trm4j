@@ -46,7 +46,6 @@ public class ProjectRepository {
         return entityManager.find(Project.class, id);
     }
 
-
     public Duration getRemainingTimeById(Long id) {
         return getById(id).getTimeLeft();
     }

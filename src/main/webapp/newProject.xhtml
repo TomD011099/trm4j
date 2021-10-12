@@ -11,11 +11,11 @@
             <h:form styleClass="form">
                 <h:outputText value="#{msgs['projects.name']}"/>
                 <p:inputText value="#{newProjectModel.name}" id="pname"/>
-                <h:message for="pname"/>
+                <h:message for="pname" styleClass="error"/>
 
                 <h:outputText value="#{msgs['projects.hours']}"/>
                 <p:inputText value="#{newProjectModel.purchasedHours}" id="phours"/>
-                <h:message for="phours"/>
+                <h:message for="phours" styleClass="error"/>
 
                 <p:commandButton value="#{msgs['projects.create']}" action="#{newProjectModel.create}" ajax="false"/>
             </h:form>

@@ -2,21 +2,22 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <ui:composition template="WEB-INF/templates/master.xhtml">
         <ui:param name="title" value="#{msgs['login']}"/>
         <ui:define name="content">
             <h:form styleClass="form login">
                 <h:outputLabel for="un" value="#{msgs['username']}"/>
-                <h:inputText id="un" value="#{loginService.username}"/>
-                <h:message for="un"/>
+                <p:inputText id="un" value="#{loginService.username}"/>
+                <h:message for="un" styleClass="error"/>
 
                 <h:outputLabel for="pw" value="#{msgs['password']}"/>
-                <h:inputSecret id="pw" value="#{loginService.password}"/>
-                <h:message for="pw"/>
+                <p:password id="pw" value="#{loginService.password}"/>
+                <h:message for="pw" styleClass="error"/>
 
                 <h:messages globalOnly="true" styleClass="error"/>
-                <h:commandButton action="#{loginService.login()}" value="#{msgs['login']}"/>
+                <p:commandButton action="#{loginService.login()}" value="#{msgs['login']}" ajax="false"/>
             </h:form>
         </ui:define>
     </ui:composition>

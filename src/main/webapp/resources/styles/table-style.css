@@ -1,0 +1,16 @@
+h1 {
+    margin: auto auto auto 1em;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+button.ui-button {
+    margin: 3em;
+}
+
+.data {
+    grid-column: 1/3;
+}

@@ -4,13 +4,18 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition template="WEB-INF/templates/master.xhtml">
         <ui:param name="title" value="#{msgs['projects.title']}"/>
+        <ui:define name="css">
+            <h:outputStylesheet name="styles/table-style.css"/>
+        </ui:define>
         <ui:define name="content">
             <h1 class="accented">#{msgs['projects.title']}</h1>
             <p:button value="#{msgs['projects.create']}" outcome="newProject" styleClass="accented-button"/>
-            <p:dataTable value="#{projectListModel.projects}" var="project" id="projects">
+<!--            <button jsf:outcome="newProject" class="create">#{msgs['projects.create']}</button>-->
+            <p:dataTable value="#{projectListModel.projects}" var="project" id="projects" styleClass="data">
                 <p:column headerText="#{msgs['id']}">#{project.id}</p:column>
                 <p:column headerText="#{msgs['name']}">#{project.name}</p:column>
                 <p:column headerText="#{msgs['projects.duration']}">

@@ -20,12 +20,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
+    padding: 2em;
 }
 
 header a {
     color: var(--mineral-green);
     text-decoration: none;
+    font-size: larger;
 }
 
 .form {
@@ -54,6 +55,10 @@ header a {
     border: none;
 }
 
+.main-content {
+    margin-bottom: 2em;
+}
+
 h1 {
     padding: 1em;
 }
@@ -74,8 +79,38 @@ footer {
     justify-content: space-between;
 }
 
-.accented-button {
+button.ui-button, button.ui-button.ui-state-hover, button.ui-button.ui-state-active {
     background: var(--accent-red);
     border: 1px solid var(--accent-red);
     color: white;
+}
+
+button.ui-button.ui-state-focus {
+    /*noinspection CssInvalidFunction*/
+    box-shadow: 0 0 0 0.2em rgb(240 70 65 / 50%);
+}
+
+div.ui-selectonelistbox.ui-state-focus {
+    /*noinspection CssInvalidFunction*/
+    box-shadow: 0 0 0 0.2em rgb(0 170 155 / 50%);
+}
+
+li.ui-selectlistbox-item.ui-state-highlight {
+    /*noinspection CssInvalidFunction*/
+    box-shadow: 0 0 0 0.2em rgb(0 170 155 / 15%);
+}
+
+body .ui-selectonelistbox .ui-selectlistbox-listcontainer .ui-selectlistbox-list .ui-selectlistbox-item.ui-state-highlight, body .ui-selectmanymenu .ui-selectlistbox-listcontainer .ui-selectlistbox-list .ui-selectlistbox-item.ui-state-highlight, body .ui-datepicker .ui-datepicker-calendar td a.ui-state-active, body .ui-datepicker .ui-datepicker-calendar td.ui-datepicker-today a.ui-state-active {
+    /*noinspection CssInvalidFunction*/
+    background: rgb(0 170 155 / 10%);
+}
+
+input.ui-inputfield.ui-state-hover {
+    border-color: var(--mineral-green);
+}
+
+input.ui-inputfield.ui-state-focus {
+    border-color: var(--mineral-green);
+    /*noinspection CssInvalidFunction*/
+    box-shadow: 0 0 0 0.2em rgb(0 170 155 / 50%);
 }
