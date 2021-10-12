@@ -1,0 +1,81 @@
+:root {
+    --strong-blue: rgb(35, 45, 75);
+    --neutral-blue: rgb(0, 85, 115);
+    --mineral-green: rgb(0, 170, 155);
+    --accent-red: rgb(240, 70, 65);
+}
+
+body {
+    font-family: sans-serif;
+    color: var(--strong-blue);
+    margin: 0;
+}
+
+.accented {
+    color: var(--accent-red);
+}
+
+header {
+    background-color: var(--strong-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+header a {
+    color: var(--mineral-green);
+    text-decoration: none;
+}
+
+.form {
+    display: grid;
+    gap: 0.7em;
+    margin: 2em;
+}
+
+.login {
+    grid-template-columns: 20% 60% 20%;
+}
+
+.login > * {
+    grid-column: 2;
+}
+
+.error {
+    color: var(--accent-red);
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.language > select {
+    color: var(--mineral-green);
+    background: none;
+    border: none;
+}
+
+h2 {
+    padding: 1em;
+}
+
+nav ul {
+    display: flex;
+    gap: 2em;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    background-color: var(--strong-blue);
+    color: var(--mineral-green);
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.accented-button {
+    background: var(--accent-red);
+    border: 1 px solid var(--accent-red);
+    color: white;
+}

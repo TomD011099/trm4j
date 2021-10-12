@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="WEB-INF/templates/master.xhtml">
+        <ui:param name="title" value="#{msgs['trms']}"/>
+        <ui:define name="content">
+            <h2 class="accented">#{msgs['trms']}</h2>
+            <p:button value="#{msgs['trm.create']}" outcome="newTimeRegistration" styleClass="accented-button"/>
+            <p:dataTable value="#{timeRegistrationListModel.timeRegistrations}" var="trm">
+                <p:column headerText="#{msgs['id']}">#{trm.id}</p:column>
+                <p:column headerText="#{msgs['project']}">#{trm.project.name}</p:column>
+                <p:column headerText="#{msgs['trm.day']}">#{trm.day}</p:column>
+                <p:column headerText="#{msgs['trm.time']}">#{trm.getFormattedDuration()}</p:column>
+            </p:dataTable>
+        </ui:define>
+    </ui:composition>
+</html>

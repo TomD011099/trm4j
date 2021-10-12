@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:metadata>
+        <f:viewParam name="id" value="#{projectDetailsModel.id}" required="true"/>
+        <f:viewAction action="#{projectDetailsModel.load()}"/>
+    </f:metadata>
+    <ui:composition template="WEB-INF/templates/master.xhtml">
+        <ui:param name="title" value="#{msgs['trm']}"/>
+        <ui:define name="content">
+            <ul>
+                <li><h:outputText value="#{projectDetailsModel.id}"/></li>
+                <li><h:outputText value="#{projectDetailsModel.name}"/></li>
+                <li><h:outputText value="#{projectDetailsModel.purchasedHours}"/></li>
+            </ul>
+            <h:dataTable value="#{projectDetailsModel.timeRegistrations}" var="timeRgistration">
+                <h:column>#{timeRgistration.id}</h:column>
+                <h:column>
+                    <h:outputText value="#{timeRgistration.day}">
+                        <f:convertDateTime dateStyle="short"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>#{timeRgistration.getFormattedDuration()}</h:column>
+            </h:dataTable>
+        </ui:define>
+    </ui:composition>
+</html>

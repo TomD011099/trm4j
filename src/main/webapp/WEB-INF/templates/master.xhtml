@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <f:view locale="#{languageService.locale}">
+        <h:head>
+            <title>TRM4j - #{title}</title>
+            <h:outputStylesheet name="styles/inetum-style.css"/>
+        </h:head>
+        <h:body>
+            <header>
+                <nav>
+                    <ul>
+                        <li>
+                            <h:link value="#{msgs['home']}" outcome="index"/>
+                        </li>
+                        <li jsf:rendered="#{request.isUserInRole('MANAGER')}">
+                            <h:link value="#{msgs['projects.title']}" outcome="projects"/>
+                        </li>
+                        <li>
+                            <h:link value="#{msgs['trm']}" outcome="trm" rendered="#{not empty request.userPrincipal}"/>
+                        </li>
+                    </ul>
+                </nav>
+                <div>
+                    <h:form rendered="#{not empty request.userPrincipal}">
+                        <h:commandLink value="#{msgs['logout']}" action="#{logoutService.logout(request)}"/>
+                    </h:form>
+                    <h:link value="#{msgs['login']}" outcome="login" rendered="#{empty request.userPrincipal}"/>
+                </div>
+            </header>
+            <ui:insert name="content"/>
+            <footer>
+                <h:outputText rendered="true" value="#{msgs['footer']}"/>
+                <div>
+                    <h:form styleClass="language">
+                        <h:selectOneMenu value="#{languageService.languageTag}">
+                            <f:selectItems value="#{languageOptionsBean.locales}" var="l" itemLabel="#{l.toLanguageTag()}"/>
+                            <f:ajax execute="@form" render="@all"/>
+                        </h:selectOneMenu>
+                    </h:form>
+                </div>
+            </footer>
+        </h:body>
+    </f:view>
+</html>

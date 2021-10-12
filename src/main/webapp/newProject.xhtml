@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="WEB-INF/templates/master.xhtml">
+        <ui:param name="title" value="#{msgs['projects.new']}"/>
+        <ui:define name="content">
+            <h1 class="accented">#{msgs['projects.new']}</h1>
+            <h:form styleClass="form">
+                <h:outputText value="#{msgs['projects.name']}"/>
+                <p:inputText value="#{newProjectModel.name}" id="pname"/>
+                <h:message for="pname"/>
+
+                <h:outputText value="#{msgs['projects.hours']}"/>
+                <p:inputText value="#{newProjectModel.purchasedHours}" id="phours"/>
+                <h:message for="phours"/>
+
+                <p:commandButton value="#{msgs['projects.create']}" action="#{newProjectModel.create}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
