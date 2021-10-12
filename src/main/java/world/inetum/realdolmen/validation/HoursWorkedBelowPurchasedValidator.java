@@ -8,6 +8,11 @@ import javax.validation.ConstraintValidatorContext;
 public class HoursWorkedBelowPurchasedValidator implements ConstraintValidator<HoursWorkedBelowPurchased, Project> {
     @Override
     public boolean isValid(Project project, ConstraintValidatorContext constraintValidatorContext) {
-        return project.getPurchasedHours().compareTo(project.getWorkedTime()) >= 0;
+        if (project.getPurchasedHours() != null) {
+            return project.getPurchasedHours().compareTo(project.getWorkedTime()) >= 0;
+        }
+        //To allow for optionality --> add @NotNull for null checks
+        return true;
+
     }
 }

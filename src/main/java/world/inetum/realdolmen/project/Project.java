@@ -5,6 +5,7 @@ import world.inetum.realdolmen.validation.HoursWorkedBelowPurchased;
 import world.inetum.realdolmen.validation.PositiveDuration;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class Project {
     private Long id;
 
     @NotNull
+    @NotBlank
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
