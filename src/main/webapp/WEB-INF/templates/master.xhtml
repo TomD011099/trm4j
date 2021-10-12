@@ -38,7 +38,8 @@
                 <div>
                     <h:form styleClass="language">
                         <h:selectOneMenu value="#{languageService.languageTag}">
-                            <f:selectItems value="#{languageOptionsBean.locales}" var="l" itemLabel="#{l.toLanguageTag()}"/>
+                            <f:selectItems value="#{languageOptionsBean.locales}" var="l"
+                                           itemLabel="#{l.toLanguageTag()}"/>
                             <f:ajax execute="@form" render="@all"/>
                         </h:selectOneMenu>
                     </h:form>

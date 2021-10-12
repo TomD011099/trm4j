@@ -76,6 +76,6 @@ footer {
 
 .accented-button {
     background: var(--accent-red);
-    border: 1 px solid var(--accent-red);
+    border: 1px solid var(--accent-red);
     color: white;
 }

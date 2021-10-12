@@ -13,7 +13,8 @@
             <h:form styleClass="form">
                 <h:outputText value="#{msgs['trm.project']}"/>
                 <p:selectOneListbox value="#{newTimeRegistrationModel.projectId}" id="trm_proj">
-                    <f:selectItems value="#{projectListModel.projects}" var="p" itemLabel="#{p.name}" itemValue="#{p.id}"/>
+                    <f:selectItems value="#{projectListModel.projects}" var="p" itemLabel="#{p.name}"
+                                   itemValue="#{p.id}"/>
                 </p:selectOneListbox>
                 <h:message for="trm_proj" styleClass="error"/>
 
@@ -22,7 +23,8 @@
                 <h:message for="trm_day" styleClass="error"/>
 
                 <h:outputText value="#{msgs['trm.start']}"/>
-                <p:datePicker value="#{newTimeRegistrationModel.startTime}" inline="true" timeOnly="true" id="trm_start"/>
+                <p:datePicker value="#{newTimeRegistrationModel.startTime}" inline="true" timeOnly="true"
+                              id="trm_start"/>
                 <h:message for="trm_start" styleClass="error"/>
 
                 <h:outputText value="#{msgs['trm.end']}"/>
@@ -30,7 +32,8 @@
                 <h:message for="trm_end" styleClass="error"/>
 
                 <h:messages globalOnly="true" styleClass="error"/>
-                <p:commandButton value="#{msgs['trm.create']}" action="#{newTimeRegistrationModel.create}" ajax="false"/>
+                <p:commandButton value="#{msgs['trm.create']}" action="#{newTimeRegistrationModel.create}"
+                                 ajax="false"/>
                 <o:validateBean value="#{newTimeRegistrationModel}" showMessageFor="trm_start trm_end"/>
             </h:form>
         </ui:define>

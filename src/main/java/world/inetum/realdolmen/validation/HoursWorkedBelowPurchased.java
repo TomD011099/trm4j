@@ -14,7 +14,7 @@ public @interface HoursWorkedBelowPurchased {
 
     String message() default "Registered hours cannot be more than purchased hours";
 
-    Class<?>[] groups() default { };
+    Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default { };
+    Class<? extends Payload>[] payload() default {};
 }

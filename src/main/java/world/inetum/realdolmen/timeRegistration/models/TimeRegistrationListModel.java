@@ -1,6 +1,5 @@
 package world.inetum.realdolmen.timeRegistration.models;
 
-import world.inetum.realdolmen.security.CurrentUserService;
 import world.inetum.realdolmen.timeRegistration.TimeRegistration;
 import world.inetum.realdolmen.timeRegistration.TimeRegistrationRepository;
 

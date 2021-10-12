@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import world.inetum.realdolmen.project.Project;
 import world.inetum.realdolmen.timeRegistration.TimeRegistration;
-import world.inetum.realdolmen.validation.HoursWorkedBelowPurchasedValidator;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -14,7 +13,6 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 

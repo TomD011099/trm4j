@@ -2,7 +2,6 @@ package world.inetum.realdolmen.security;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
-
 import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.credential.UsernamePasswordCredential;

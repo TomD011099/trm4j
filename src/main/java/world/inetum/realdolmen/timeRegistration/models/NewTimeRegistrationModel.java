@@ -5,9 +5,7 @@ import world.inetum.realdolmen.validation.PositiveTrmDuration;
 import world.inetum.realdolmen.validation.TrmHoursWorkedBelowPurchased;
 
 import javax.ejb.EJB;
-import javax.ejb.EJBException;
 import javax.enterprise.inject.Model;
-import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;

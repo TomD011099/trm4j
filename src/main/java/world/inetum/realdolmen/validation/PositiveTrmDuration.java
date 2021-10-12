@@ -14,7 +14,7 @@ public @interface PositiveTrmDuration {
 
     String message() default "Registered hours cannot be negative";
 
-    Class<?>[] groups() default { };
+    Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default { };
+    Class<? extends Payload>[] payload() default {};
 }
