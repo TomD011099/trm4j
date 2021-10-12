@@ -34,6 +34,9 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<TimeRegistration> timeRegistrations;
 
+    @Version
+    private Integer version;
+
     public Project() {
         this.timeRegistrations = new ArrayList<>();
     }
@@ -57,6 +60,10 @@ public class Project {
 
     public Duration getTimeLeft() {
         return purchasedHours.minus(getWorkedTime());
+    }
+
+    public void addTrm(TimeRegistration trm) {
+        this.timeRegistrations.add(trm);
     }
 
     public Long getId() {
@@ -89,5 +96,22 @@ public class Project {
 
     public void setTimeRegistrations(List<TimeRegistration> timeRegistrations) {
         this.timeRegistrations = timeRegistrations;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", purchasedHours=" + purchasedHours +
+                '}';
     }
 }

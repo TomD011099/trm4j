@@ -4,7 +4,7 @@ import world.inetum.realdolmen.project.Project;
 import world.inetum.realdolmen.validation.PositiveDuration;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -20,7 +20,7 @@ public class TimeRegistration {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "meeting_fk", nullable = false)
+    @JoinColumn(name = "project_fk", nullable = false)
     private Project project;
 
     @NotNull
@@ -33,7 +33,7 @@ public class TimeRegistration {
     private Duration duration;
 
     @NotNull
-    @NotEmpty
+    @NotBlank
     @Column(name = "consultant", nullable = false, updatable = false)
     private String consultant;
 

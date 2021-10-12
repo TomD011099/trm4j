@@ -14,6 +14,10 @@ public class ProjectListModel {
     @EJB
     ProjectRepository projectRepository;
 
+    public void removeProject(Long id) {
+        projectRepository.deleteById(id);
+    }
+
     public List<Project> getProjects() {
         return projectRepository.getAll();
     }

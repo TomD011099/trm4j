@@ -8,9 +8,9 @@
     <ui:composition template="WEB-INF/templates/master.xhtml">
         <ui:param name="title" value="#{msgs['projects.title']}"/>
         <ui:define name="content">
-            <h2 class="accented">#{msgs['projects.title']}</h2>
+            <h1 class="accented">#{msgs['projects.title']}</h1>
             <p:button value="#{msgs['projects.create']}" outcome="newProject" styleClass="accented-button"/>
-            <p:dataTable value="#{projectListModel.projects}" var="project">
+            <p:dataTable value="#{projectListModel.projects}" var="project" id="projects">
                 <p:column headerText="#{msgs['id']}">#{project.id}</p:column>
                 <p:column headerText="#{msgs['name']}">#{project.name}</p:column>
                 <p:column headerText="#{msgs['projects.duration']}">
@@ -32,6 +32,10 @@
                     <p:link value="#{msgs['projects.view']}" outcome="projectDetails">
                         <f:param name="id" value="#{project.id}"/>
                     </p:link>
+                </p:column>
+                <p:column>
+                    <p:commandButton icon="pi pi-times" styleClass="rounded-button ui-button-danger ui-button-outlined"
+                                     action="#{projectListModel.removeProject(project.id)}" update="projects"/>
                 </p:column>
             </p:dataTable>
         </ui:define>

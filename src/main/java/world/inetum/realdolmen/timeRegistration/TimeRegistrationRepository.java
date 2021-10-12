@@ -8,6 +8,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import java.time.Duration;
@@ -35,10 +36,19 @@ public class TimeRegistrationRepository {
 
         trm.setDay(timeRegistration.getDay());
         trm.setDuration(Duration.between(start, end));
-        trm.setProject(entityManager.find(Project.class, timeRegistration.getProjectId()));
         trm.setConsultant(currentUserService.getCurrentUserName());
 
+        Project p = entityManager.find(Project.class, timeRegistration.getProjectId(), LockModeType.OPTIMISTIC_FORCE_INCREMENT);
+        trm.setProject(p);
+        p.addTrm(trm);
+
         logger.info("Creating new time registration: " + trm);
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         entityManager.persist(trm);
     }

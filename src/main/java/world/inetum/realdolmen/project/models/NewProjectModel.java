@@ -4,7 +4,7 @@ import world.inetum.realdolmen.project.ProjectRepository;
 
 import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
@@ -16,7 +16,7 @@ public class NewProjectModel {
     private Integer purchasedHours;
 
     @NotNull
-    @NotEmpty
+    @NotBlank
     private String name;
 
     @EJB
@@ -31,17 +31,15 @@ public class NewProjectModel {
         return purchasedHours;
     }
 
-    public NewProjectModel setPurchasedHours(Integer purchasedHours) {
+    public void setPurchasedHours(Integer purchasedHours) {
         this.purchasedHours = purchasedHours;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public NewProjectModel setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 }

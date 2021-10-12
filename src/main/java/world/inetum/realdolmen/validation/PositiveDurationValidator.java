@@ -9,7 +9,7 @@ public class PositiveDurationValidator implements ConstraintValidator<PositiveDu
     @Override
     public boolean isValid(Duration duration, ConstraintValidatorContext constraintValidatorContext) {
         if (duration != null) {
-            return !duration.isNegative();
+            return !duration.isNegative() && !duration.isZero();
         }
         //To allow for optionality --> add @NotNull for null checks
         return true;

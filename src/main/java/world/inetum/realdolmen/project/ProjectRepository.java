@@ -25,7 +25,15 @@ public class ProjectRepository {
         project.setName(newProjectModel.getName());
         project.setPurchasedHours(Duration.ofHours(newProjectModel.getPurchasedHours()));
 
+        logger.info("create - " + project);
+
         entityManager.persist(project);
+    }
+
+    @RolesAllowed("MANAGER")
+    public void deleteById(Long id) {
+        Project p = entityManager.find(Project.class, id);
+        entityManager.remove(p);
     }
 
     public List<Project> getAll() {
